@@ -1,0 +1,97 @@
+html, body {
+	overflow-x: hidden;
+  }
+  body {
+	position: relative
+  }
+
+.main{
+	margin-top:5%;
+}
+
+/*.col{
+	text-align: center;
+}*/
+
+.inputdata{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom:12px;
+}
+
+.inputdata2{
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom:12px;
+}
+
+.headtitle{
+	background-color: #a89f8f; 
+    border-radius: 3px;
+    height:40px;
+    display: table; 
+}
+
+.headtitle p{
+	color:white;
+  	padding-left:6%;
+  	vertical-align: middle;
+  	display: table-cell;    
+}
+
+i{
+	padding-right:4%;
+}
+
+.asklogin{
+	margin-top: 0px;
+	text-align: center;
+	font-size:11px;
+}
+
+.logdata{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom:5px;
+}
+
+.checkposition{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.priceend{
+	float:right;
+}
+
+.confirmpayment{
+	margin-top:20px;
+	height:80px;
+}
+
+#newaccount{
+	display:none;
+}
+
+/*
+#divmp1, #divmp2, #divmp3{
+	display:none;
+} */
+
+.discount{
+	display:flex;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom:5px;
+}
+
+.error{
+	color:red;
+}
+
+img{
+	width:100%;
+}
