@@ -5,6 +5,7 @@
 4. Wszystkie biblioteki zostały dodane za pomocą CDN (Bootstrap CSS/JS, Jquery, FontAwesome icons)
 5. Xampp posłużył jako serwer
 6. Kody rabatowe - "20promo"(20% | Aktywny), "50promo"(50% | Nieaktywny)
+7. Strona główna to strona index.php
 
 # Wykonane Zadania
 Wymagane: 1,2,3,4 <br>
