@@ -35,17 +35,29 @@ foreach($_POST as $value)
     }
 }
 
+require('database_connect.php');
+$user=$mysqli->query("SELECT `login` FROM `client` WHERE `login` = '".$login."'")->fetch_array(MYSQLI_ASSOC);
+if (!empty($user))
+{
+    if($login == $user['login'])
+    {
+        echo("Taki login już istnieje <br>");
+        $flag = 1;
+    }
+}
+
 $secretKey = "6Ld5QIccAAAAAM_geWvvMwQavzk0IQ9_3j1uTqnT";
 $ip = $_SERVER['REMOTE_ADDR'];
-// post request to server
+//wysyła zapytanie na serwer
 $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($recaptcha);
 $response = file_get_contents($url);
 $responseKeys = json_decode($response,true);
-// should return JSON with success as true
 if($responseKeys["success"]) {
     if($flag == 0)
     {
-        require('database_connect.php');
+       
+        //Hashowanie hasła
+        $password = password_hash($password, PASSWORD_DEFAULT);
         if ($mysqli->query("INSERT INTO `client`(`login`, `password`, `name`, `lastname`, `country`, `adress`, `post_code`, `city`, `phone`, `newsletter`) VALUES ('$login','$password','$name','$lastname','$country','$adress','$post_code','$city','$phone','$newsletter')") === TRUE) {
             
         } else {
