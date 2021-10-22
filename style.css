@@ -1,97 +1,107 @@
 html, body {
-	overflow-x: hidden;
-  }
-  body {
-	position: relative
-  }
+  overflow-x: hidden;
+  position: relative;
+  max-width: 100rem;
+  margin: 0 auto;
+}
 
-.main{
-	margin-top:5%;
+.main {
+  margin-top: 5%;
 }
 
 /*.col{
 	text-align: center;
 }*/
-
-.inputdata{
-	display:block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom:12px;
+.inputdata {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
 }
 
-.inputdata2{
-
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom:12px;
+.inputdata2 {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
 }
 
-.headtitle{
-	background-color: #a89f8f; 
-    border-radius: 3px;
-    height:40px;
-    display: table; 
+.headtitle {
+  background-color: #a89f8f;
+  border-radius: 3px;
+  height: 40px;
+  display: table;
 }
 
-.headtitle p{
-	color:white;
-  	padding-left:6%;
-  	vertical-align: middle;
-  	display: table-cell;    
+.headtitle p {
+  color: #fff;
+  padding-left: 6%;
+  vertical-align: middle;
+  display: table-cell;
 }
 
-i{
-	padding-right:4%;
+.headtitle i {
+  padding-right: 4%;
 }
 
-.asklogin{
-	margin-top: 0px;
-	text-align: center;
-	font-size:11px;
+.product_data::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  margin: 1rem 0;
+  border-top: 0.5px solid #c0c2c5;
 }
 
-.logdata{
-	display:block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom:5px;
+.ask_login {
+  margin-top: 0px;
+  text-align: center;
+  font-size: 11px;
 }
 
-.checkposition{
-	margin-left: auto;
-	margin-right: auto;
+.log_data {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
 }
 
-.priceend{
-	float:right;
+.price_end {
+  float: right;
 }
 
-.confirmpayment{
-	margin-top:20px;
-	height:80px;
+.confirm_payment {
+  margin-top: 20px;
+  height: 80px;
 }
 
-#newaccount{
-	display:none;
+.new_account, .different_address, #price_rabat_block, #price_delivery_block {
+  display: none;
 }
 
 /*
 #divmp1, #divmp2, #divmp3{
 	display:none;
 } */
-
-.discount{
-	display:flex;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom:5px;
+.discount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
 }
 
-.error{
-	color:red;
+.error {
+  color: #ff0000;
 }
 
-img{
-	width:100%;
+img {
+  width: 100%;
 }
+
+@media only screen and (max-width: 1300px) {
+  .product_img {
+    margin-bottom: 1rem;
+    max-width: 350px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

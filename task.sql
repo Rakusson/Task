@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 24 Wrz 2021, 05:23
+-- Czas generowania: 22 Paź 2021, 03:26
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 8.0.10
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `client` (
   `id` int(10) NOT NULL,
-  `login` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `login` varchar(50) DEFAULT NULL,
+  `password` varchar(250) DEFAULT NULL,
   `name` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `country` varchar(50) NOT NULL,
@@ -60,6 +60,21 @@ INSERT INTO `delivery` (`id`, `type`) VALUES
 (1, 'Paczkomaty'),
 (2, 'DPD'),
 (3, 'DPD Pobranie');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `different_address`
+--
+
+CREATE TABLE `different_address` (
+  `id` int(11) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `post_code` varchar(10) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `phone` int(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -97,7 +112,8 @@ CREATE TABLE `order` (
   `id_delivery` int(10) NOT NULL,
   `id_payment` int(10) NOT NULL,
   `id_discount` int(10) NOT NULL,
-  `comment` varchar(150) NOT NULL
+  `comment` varchar(150) NOT NULL,
+  `id_different_address` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -137,6 +153,12 @@ ALTER TABLE `delivery`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `different_address`
+--
+ALTER TABLE `different_address`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeksy dla tabeli `discount`
 --
 ALTER TABLE `discount`
@@ -150,7 +172,8 @@ ALTER TABLE `order`
   ADD KEY `id_payment_key` (`id_payment`),
   ADD KEY `id_delivery_key` (`id_delivery`),
   ADD KEY `id_discount_key` (`id_discount`),
-  ADD KEY `id_client_key` (`id_client`);
+  ADD KEY `id_client_key` (`id_client`),
+  ADD KEY `id_different_address` (`id_different_address`);
 
 --
 -- Indeksy dla tabeli `payment`
@@ -166,13 +189,19 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT dla tabeli `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `delivery`
 --
 ALTER TABLE `delivery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT dla tabeli `different_address`
+--
+ALTER TABLE `different_address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `discount`
@@ -184,7 +213,7 @@ ALTER TABLE `discount`
 -- AUTO_INCREMENT dla tabeli `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `payment`
@@ -202,6 +231,7 @@ ALTER TABLE `payment`
 ALTER TABLE `order`
   ADD CONSTRAINT `id_client_key` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`),
   ADD CONSTRAINT `id_delivery_key` FOREIGN KEY (`id_delivery`) REFERENCES `delivery` (`id`),
+  ADD CONSTRAINT `id_different_address_key` FOREIGN KEY (`id_different_address`) REFERENCES `different_address` (`id`),
   ADD CONSTRAINT `id_discount_key` FOREIGN KEY (`id_discount`) REFERENCES `discount` (`id`),
   ADD CONSTRAINT `id_payment_key` FOREIGN KEY (`id_payment`) REFERENCES `payment` (`id`);
 COMMIT;
